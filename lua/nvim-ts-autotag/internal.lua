@@ -370,6 +370,9 @@ local function check_close_tag(close_slash_tag)
         end
         return true, tag_name
     end
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    local char = vim.api.nvim_get_current_line():sub(col,col+1)
+    if char == '<>' then return true, '' end
     return false
 end
 
